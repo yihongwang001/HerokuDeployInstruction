@@ -1,0 +1,45 @@
+Deploy application to Heroku. The application made with Express+MongoDB+React.
+Frist: uploading your project on github;make sure you have package.json and package-lock.json; if you are using yarn, you need to have package.json and yarn.lock
+Second: make sure your package.json has following scripts:
+
+{
+  "name": " ",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./bin/www",
+  "scripts": {
+    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www",
+    "serverstart": "npm start",
+    "heroku-postbuild": "cd front && npm install && npm run build"
+  },
+ 
+ # "main": "./bin/www" and three lines in scripts are important !!!!!!!!!!!!!!! you must have "main" and "start"
+ # if your app is not in main branch on github, you need to change it into your branch name; or put your app in the main branch !
+ # if your app will run a front file after npm install, add the last line into scripts    
+
+Third: Test if your application can work locally
+1- type in local terminal (macOS):git clone <githubRepository url> 
+for example:git clone https://github.com/yihongwang001/hello.git
+2- type in local terminal: cd <repositoryName>
+for example: cd hello
+3- type in local terminal:npm install
+4- type in local terminal:npm run heroku-postbuild
+
+Fourth: Test your application in heroku local web
+1- type in local terminal:heroku local web
+# open a browser and type address: localhost:5000/
+# if your appplication works well before, it should be works well in loaclhost:5000 (don't change the number, it's heroku port number.
+
+Fifth: After testing, you could now start to deploy.
+1- create heroku account
+2- install heroku command line
+https://devcenter.heroku.com/categories/command-line
+3- type in local terminal:heroku login
+4- type in local terminal:heroku create
+
+Sixth: Deploy it !
+1- type in local terminal:git push heroku main
+2- heroku open
+3- successly automatically open a browser and see your app
+address for example: To https://git.heroku.com/boiling-ridge-41223.git
+
